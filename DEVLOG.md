@@ -12,6 +12,10 @@
 - [ ] write server side code
 - [ ] write basic "mobile" app
 
+### 02/21/2021 the sensor died
+I only have one... ugh. I got this far though
+![parts soldered for body design, clip designed on moisture sensor](./esp-01-modded-for-analog-input-deep-sleep-capacitive-moisture-sensor-1s-lipo.PNG)
+
 ### 02/20/2021 initial dev
 Connected it all up to DMM dry run got 2.746V
 1.069V fully submerged up to top line in tap water
