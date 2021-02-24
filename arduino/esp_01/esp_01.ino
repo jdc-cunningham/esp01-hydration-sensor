@@ -41,13 +41,14 @@ void connectWifi() {
 void transmit() {
   if (WiFi.status() == WL_CONNECTED) {
     digitalWrite(LED, HIGH); // power on sensor through MOSFET
+    delay(5000); // don't know how long these need to be just visual confirmation with DMM
     String soilMoisture = String(analogRead(A0));
     Serial.println("measured");
     Serial.println(soilMoisture);
     digitalWrite(LED, LOW);
 
     HTTPClient http;
-    http.begin("http://your-local-ip-or-domain/plant-moisture");
+    http.begin("http://your-ip/plant-moisture");
     http.addHeader("Content-Type", "text/plain");
     int httpCode = http.POST(soilMoisture);
     String payload = http.getString();
