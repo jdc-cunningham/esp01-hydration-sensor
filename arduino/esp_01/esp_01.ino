@@ -10,11 +10,17 @@
 // using voltage divider 330 ohm to 100 ohm eg. 3.3V dropped to 0.748V
 // max from moisture sensor is 3V so 0.698V should be max
 
+// GPIO out sourced here
+// https://simple-circuit.com/arduino-esp-01-esp8266-programming/
+
+#define LED 2 // LED to GPIO2
+
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
 void setup() {
   Serial.begin(115200);
+  pinMode(LED, OUTPUT);
 
   // set pinMode for TOUT(6) (3rd pin from deep sleep wired to reset pin)
   // https://forum.arduino.cc/index.php?topic=658062.0
@@ -34,14 +40,20 @@ void connectWifi() {
 
 void transmit() {
   if (WiFi.status() == WL_CONNECTED) {
+    digitalWrite(LED, HIGH); // power on sensor through MOSFET
+    String soilMoisture = String(analogRead(A0));
+    Serial.println("measured");
+    Serial.println(soilMoisture);
+    digitalWrite(LED, LOW);
+
     HTTPClient http;
     http.begin("http://your-local-ip-or-domain/plant-moisture");
     http.addHeader("Content-Type", "text/plain");
-    int httpCode = http.POST(String(analogRead(A0)));
+    int httpCode = http.POST(soilMoisture);
     String payload = http.getString();
     Serial.println(httpCode);
     Serial.println(payload);
-    http.end();  
+    http.end();
   } else {
     Serial.println("Error in WiFi connection");
   }
