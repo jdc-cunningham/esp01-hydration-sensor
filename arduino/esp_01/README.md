@@ -23,5 +23,6 @@ The other version without MOSFET
 
 ![no MOSFET](./circuit-diagram.png)
 
-Here it is wired up
+Here it is wired up, I pulled off the yellow/black wires for probing, trying to get the analog value stepped down. The 330 ohm total resistance was too low also, had to use Mega Ohms to get near 1V vs. 0.008V
 
+![last wired up state](./esp-01-last-state.JPG)
