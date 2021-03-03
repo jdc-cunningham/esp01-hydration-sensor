@@ -1,10 +1,11 @@
 ### Tasks
 
-- [ ] interface with sensor
-  - [x] get it turned on, get values out regarding dry, in water, compare
-    - [x] measure sensor output
-  - [ ] use ESP to read it (need divider)
-- [ ] write basic code for ESP01
+- [ ] interface with Seeeduino
+  - [x] program it
+  - [x] check ADC value against DMM
+    - it's okay, seems to be off 0.03V 
+- [ ] connect Seeeduino with ESP-01
+  - [ ] try serial, software serial sucked
 - [ ] design parts
 - [ ] print
 - [ ] assemble
@@ -12,16 +13,7 @@
 - [ ] write server side code
 - [ ] write basic "mobile" app
 
-### 02/21/2021 the sensor died
-I only have one... ugh. I got this far though
+### 03/02/2021
+Here we go again... just got the Seeeduino, soldered the male headers on and powered it on through the 5V. Looks like it is preloaded with some blink sketch.
 
-![parts soldered for body design, clip designed on moisture sensor](./esp-01-modded-for-analog-input-deep-sleep-capacitive-moisture-sensor-1s-lipo.PNG)
-
-I did wire it all up and had it working, just for whatever reason the sensor died/not outputting values on analog.
-
-![esp-01 in cup](./esp-01-moisture-in-cup.PNG)
-
-### 02/20/2021 initial dev
-Connected it all up to DMM dry run got 2.746V
-1.069V fully submerged up to top line in tap water
-
+Ehh.. I'm burnt today I have to program the ESP-01 then program Seeeduino then wire them up. Using this [page](https://www.instructables.com/Serial-Communication-Between-Arduino-and-ESP-01/) for the serial wiring.
