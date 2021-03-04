@@ -5,7 +5,7 @@ Specifically I could not step the voltage down from the 3V max output of the ana
 
 This is one of the configurations I tried(other didn't have the MOSFET)
 
-![with mosfet](./wiring-diagram.png)
+![with mosfet](./wiring-diagram-annotated.png)
 
 The on/off aspec works great, but as mentioned anytime I tried to drop the voltage down it would make the sensor not work.
 
