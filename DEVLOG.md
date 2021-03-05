@@ -7,9 +7,13 @@
 - [x] connect Seeeduino with ESP-01
   - [x] try serial, software serial sucked
     - using this `Serial1` thing not regular Serial maybe can use both at the same time i.e. the serial monitor
-- [ ] connect moisture sensor to ADC/make sure it works/value sent
+- [x] connect moisture sensor to ADC/make sure it works/value sent
 - [ ] add voltage divider for power measurement
+  - looks like using 2 M Ohm resistors for 6.4V to < 3.3V
 - [ ] test solar panels
+  - [ ] wire up
+    - using a step down converter after all since need 6-7V.
+  - [ ] see if it charges battery noticeably
   - serial connection, backflow diodes in place to charge 4cell can battery
 - [ ] design parts
 - [ ] print
