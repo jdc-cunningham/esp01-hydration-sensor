@@ -1,67 +1,63 @@
-// this code requires 2 modifications to the ESP-01
-// you have to solder the XPD-DCDC pin on the chip to the reset pin
-// you have to solder the TOUT pin on the chip to whatever analog value you're measuring
-// the analog value should not exceed 1V, I am using a voltage divider
-
-// code mostly from https://techtutorialsx.com/2016/07/21/esp8266-post-requests/
-// deep sleep from https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
-// note the endpoint eg. "http.begin", this matches your endpoint that's receiving the POST request as text
-
-// using voltage divider 330 ohm to 100 ohm eg. 3.3V dropped to 0.748V
-// max from moisture sensor is 3V so 0.698V should be max
-
-// GPIO out sourced here
-// https://simple-circuit.com/arduino-esp-01-esp8266-programming/
-
-#define LED 2 // LED to GPIO2
+// the wiring between the Seeeduino and ESP-01 is based on the page below
+// https://www.instructables.com/Serial-Communication-Between-Arduino-and-ESP-01/
 
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-void setup() {
+const String wiFiSsid = "";
+const String wiFiPass = "";
+const String httpEndpoint = "http://your-endpoint/soil-moisture";
+
+void setup()
+{
   Serial.begin(115200);
-  pinMode(LED, OUTPUT);
-
-  // set pinMode for TOUT(6) (3rd pin from deep sleep wired to reset pin)
-  // https://forum.arduino.cc/index.php?topic=658062.0
-  pinMode(A0, INPUT);
 }
 
-void connectWifi() {
-  WiFi.begin("SSID", "WiFi Pass");
+void connectToWiFi()
+{
+  WiFi.begin(wiFiSsid, wiFiPass);
+  int connectionAttempts = 0;
 
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED and connectionAttempts < 20)
+  {
     delay(250);
-    Serial.println("Waiting for connection");
+    connectionAttempts += 1;
   }
-
-  transmit();
 }
 
-void transmit() {
-  if (WiFi.status() == WL_CONNECTED) {
-    digitalWrite(LED, HIGH); // power on sensor through MOSFET
-    delay(5000); // don't know how long these need to be just visual confirmation with DMM
-    String soilMoisture = String(analogRead(A0));
-    Serial.println("measured");
-    Serial.println(soilMoisture);
-    digitalWrite(LED, LOW);
-
+void txStrByWiFi(String strPayload)
+{
+  connectToWiFi();
+  if (WiFi.status() == WL_CONNECTED)
+  {
     HTTPClient http;
-    http.begin("http://your-ip/plant-moisture");
+    http.begin(httpEndpoint);
     http.addHeader("Content-Type", "text/plain");
-    int httpCode = http.POST(soilMoisture);
-    String payload = http.getString();
-    Serial.println(httpCode);
-    Serial.println(payload);
+    int httpCode = http.POST(strPayload);
+    String resp = http.getString();
     http.end();
-  } else {
-    Serial.println("Error in WiFi connection");
   }
 }
 
-void loop() {
-  connectWifi();
+// from https://forum.arduino.cc/index.php?topic=234151.0
+void clearSerialBuffer()
+{
+  while(Serial.available() > 0)
+  {
+    char t = Serial.read();
+  }
+}
+
+void loop()
+{
+  if (Serial.available() > 0)
+  {
+    String serialMsg = Serial.readString();
+    if (serialMsg.length() > 0)
+    {
+      txStrByWiFi(serialMsg);
+      clearSerialBuffer();
+    }
+  }
   delay(5000);
-  // ESP.deepSleep(1.44e+7); // sleep for 4 hours, runs 6 times a day
 }
