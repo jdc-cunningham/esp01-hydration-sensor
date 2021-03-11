@@ -6,7 +6,8 @@
                 "/Users/jacob/Library/Arduino15/packages/esp8266/tools/**",
                 "/Users/jacob/Documents/Arduino/libraries/**",
                 "/Arduino.app/Contents/Java/libraries/**",
-                "/Users/jacob/Library/Arduino15/packages/esp8266/hardware/esp8266/2.7.4/**"
+                "/Users/jacob/Library/Arduino15/packages/esp8266/hardware/esp8266/2.7.4/**",
+                "Arduino.app/Contents/Java/libraries/**"
             ],
             "forcedInclude": [],
             "defines": [

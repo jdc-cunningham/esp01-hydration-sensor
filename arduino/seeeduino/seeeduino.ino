@@ -5,11 +5,12 @@ void setup() {
 }
 
 void loop() {
+
   pinMode(0, OUTPUT);
   digitalWrite(0, HIGH);
-  delay(1000);
-  int aVal = analogRead(A1);
+  delay(5000);
+  // int aVal = analogRead(A1);
   digitalWrite(0, LOW);
-  Serial1.println(aVal);
+  // Serial1.println(aVal);
   delay(5000);
 }
