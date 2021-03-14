@@ -23,6 +23,9 @@
 - [ ] write basic "mobile" app
 - [ ] do a test of battery duration/consumption over a day
 
+# 03/13/2021
+I tested the IRL7833 today, it seems to work well. I would get the full 100% voltage or 0.010V on low state. Guess that's good enough. I am order more parts yet again... this time a BMS people suggested. I'll be working on designing the body but I think I have everything figured out now... I just gotta finish it.
+
 ### 03/10/2021
 I ordered a bunch of parts for electronic switching so I'm delayed again. I also decided to just abandon the solar cells. I tried it on a 4-cell can battery set and they didn't do jack squat. So... going for decent battery capacity and hopefully low-ish draw over time. I still want the 8 analog inputs and voltage sensor capability. I ordered some 2N2222A transistors(testing those now). I also ordered some logic-level MOSFETs as the other ones I bought are not that... can't be triggered reliably with pins from an Arduino. Those are IRL7833 which I have not received yet. The battery is a 2S pack LiPo 1.1Ah capacity. Interestingly I also ordered these 3Ah Li-ion cells with built in chargers. I could step those up to 5V and in theory have more capacity than the 2S packs... either way some regulation is needed. I think I'll save the cell batteries for the small robot.
 
