@@ -23,6 +23,29 @@
 - [ ] write basic "mobile" app
 - [ ] do a test of battery duration/consumption over a day
 
+# 03/16/2021
+I have all the parts I need now. I am doing a "quick" power consumption check. There are a few ways to go about optimizing power consumption, maybe through deep sleep/power cutting, almost 0. But I don't want to get sucked into all that, I'll come up with a solution and within this week I will finish up this project. I'm going to design these snap-together splash-proof headers for the moisture sensors so they should generally be safe from watering. They'll only be on for a couple seconds so I don't think heat is a big concern eg. vents.
+
+One of the main problems is while I have options to get into deep sleep there's no way to have the battery severable without something running to wake it up. The ESP-01 I modded to do that(wake itself from deep sleep)...
+
+I don't know maybe if I use two logic mosfets and one manages power for the whole thing, the other manages power for the sensors... it could work. Then the ESP-01 is the "master" brain sleep thing.
+
+I'll just have to check networking/serial still works in that mode. It may make this project less re-producible but hardly anything I've built people made too so oh well.
+
+The test run I did:
+
+Starting voltage 7.7V
+Transmitting every 10 minutes
+Seeeduino and ESP-01 constantly on, logic MOSFET turning on/off to power analog sensor during sampling. Power is up for 5 seconds then measure/off.
+Did this for 4 hours.
+
+Dropped to 7.3V... which I don't know what that means ha.
+But I'll compare it against the deep sleep wiring version.
+
+I think my "safe voltage" cutoff would be 6.4V as in 3.2V per cell. The BMS has an overcharge protection voltage of I think 3.0V below that the battery is "off".
+
+I have to figure out the new wiring... not sure if I will try the coincell route, because I think I will have to do that supercap mod to be able to transmit.
+
 # 03/13/2021
 I tested the IRL7833 today, it seems to work well. I would get the full 100% voltage or 0.010V on low state. Guess that's good enough. I am order more parts yet again... this time a BMS people suggested. I'll be working on designing the body but I think I have everything figured out now... I just gotta finish it.
 

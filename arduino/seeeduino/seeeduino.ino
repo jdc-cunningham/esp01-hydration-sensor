@@ -9,8 +9,8 @@ void loop() {
   pinMode(0, OUTPUT);
   digitalWrite(0, HIGH);
   delay(5000);
-  // int aVal = analogRead(A1);
+  int aVal = analogRead(A1);
   digitalWrite(0, LOW);
-  // Serial1.println(aVal);
-  delay(5000);
+  Serial1.println(aVal);
+  delay(600000);
 }
