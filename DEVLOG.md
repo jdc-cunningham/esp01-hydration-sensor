@@ -37,6 +37,16 @@ Gotta get back to my roots, that open field, peace of mind, being
 
 This is the circuit design I'm trying to do now. Seems I gotta get the timing right when things turn on/off.
 
+AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+I have dumped so much time into this project. Here is a new idea... I will just use an LD33V like a noob, it'll come after the single cell BMS and then it'll last as long as the estimated 1 month from the 2S pack... who knows if it'll last this long. Circuit below explaining the wiring from a higher up context.
+
+![pain](./circuit-woes.png)
+
+Reality: this is 6hrs gahhh
+
+![is living](./madness.JPG)
+
 # 03/16/2021
 I have all the parts I need now. I am doing a "quick" power consumption check. There are a few ways to go about optimizing power consumption, maybe through deep sleep/power cutting, almost 0. But I don't want to get sucked into all that, I'll come up with a solution and within this week I will finish up this project. I'm going to design these snap-together splash-proof headers for the moisture sensors so they should generally be safe from watering. They'll only be on for a couple seconds so I don't think heat is a big concern eg. vents.
 
