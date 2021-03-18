@@ -1,16 +1,29 @@
+// this code requires 1 modification to the ESP-01
+// you have to solder the XPD-DCDC pin on the chip to the reset pin
+
+// code mostly from https://techtutorialsx.com/2016/07/21/esp8266-post-requests/
+// deep sleep from https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
+// note the endpoint eg. "http.begin", this matches your endpoint that's receiving the POST request as text
+
+// GPIO out sourced here
+// https://simple-circuit.com/arduino-esp-01-esp8266-programming/
+
 // the wiring between the Seeeduino and ESP-01 is based on the page below
 // https://www.instructables.com/Serial-Communication-Between-Arduino-and-ESP-01/
+
+#define LED 2 // LED to GPIO2
 
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-const String wiFiSsid = "";
-const String wiFiPass = "";
-const String httpEndpoint = "http://your-endpoint/soil-moisture";
+const String wiFiSsid = "SSID";
+const String wiFiPass = "Pass";
+const String httpEndpoint = "http://192.168.1.144:5000/soil-moisture";
 
 void setup()
 {
   Serial.begin(115200);
+  pinMode(LED, OUTPUT);
 }
 
 void connectToWiFi()
@@ -50,6 +63,11 @@ void clearSerialBuffer()
 
 void loop()
 {
+  // turn big circuit on to power Seeeduino
+  digitalWrite(LED, HIGH);
+  // delay(10000);
+  // digitalWrite(LED, LOW);
+  // check for serial message to send to server
   if (Serial.available() > 0)
   {
     String serialMsg = Serial.readString();
@@ -57,6 +75,8 @@ void loop()
     {
       txStrByWiFi(serialMsg);
       clearSerialBuffer();
+      digitalWrite(LED, LOW);
+      delay(5000);
     }
   }
   delay(5000);

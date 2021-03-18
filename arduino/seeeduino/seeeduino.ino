@@ -12,5 +12,7 @@ void loop() {
   int aVal = analogRead(A1);
   digitalWrite(0, LOW);
   Serial1.println(aVal);
-  delay(600000);
+  Serial.print(aVal);
+  // delay(600000);
+  delay(5000);
 }

@@ -1,27 +1,41 @@
-### Tasks
+### Tasks for low power design
 
-- [x] interface with Seeeduino
-  - [x] program it
-  - [x] check ADC value against DMM
-    - it's okay, seems to be off 0.03V
-- [x] connect Seeeduino with ESP-01
-  - [x] try serial, software serial sucked
-    - using this `Serial1` thing not regular Serial maybe can use both at the same time i.e. the serial monitor
-- [x] connect moisture sensor to ADC/make sure it works/value sent
-- [ ] add voltage divider for power measurement
-  - looks like using 2 M Ohm resistors for 6.4V to < 3.3V
-- [ ] test solar panels
-  - [ ] wire up
-    - using a step down converter after all since need 6-7V.
-  - [ ] see if it charges battery noticeably
-  - serial connection, backflow diodes in place to charge 4cell can battery
-- [ ] design parts
-- [ ] print
-- [ ] assemble
-- [ ] deploy
-- [ ] write server side code
-- [ ] write basic "mobile" app
-- [ ] do a test of battery duration/consumption over a day
+- [ ] setup coin cell supercap based ESP-01 for deep sleep
+  ~~- [ ] design and print coin sleeve compressed wire holder~~
+  ~~- [ ] find cap/resistor and connect~~
+    - I don't have a supercap... or one that is rated at 3V, lowest is 6.3V at 1000uF. I think it will stop at 3V/matching battery right?
+      Oh... that's why it's a super cap all of mine are micro
+      I just lucked out, I thought this part on a random board is a capacitor but it's a 3V battery... neat. I have no idea of its capacity though.
+      well this battery may be from 1989 but that's alright... yeah... so it was like 0.5V under load haha... now measures 2.75V ahh... so it's dead. I actually... can just go to a store and buy a 3V coincell battery... ahh this is not good trying to figure out what to power the ESP-01 with.
+  - [ ] verify it works on its own
+  - [ ] can turn on the main circuit(big battery and seeeduino can work)
+
+# 03/17/2021
+I think today is it. I can finally finish this project and the device should last a month long or more. I am finally done buying parts... it's stressful ordering parts regarding delivery completion.
+
+So today I have to finalize the electronic layout, solder everything, design the cases, print all the parts and assemble it. Then do the web interface to store/get this data and display it with some interface.
+
+Ugh... this is depressing. Yesterday all the electronics were working well where at 0 the MOSFET drain had no leakage... now in low state there is some voltage coming out.
+
+Ehh... I forgot I set a sleep of 1 hour on the Seeeduino
+
+Oh I see it is pretty much 0 if I'm measuring the drain directly with a multimeter, I had it also parallel connected to the moisture sensor.
+
+The ESP stopped transmitting though trying to figure that out.
+
+Ugh... mega fail today... my previously working serial com Seeeduino to ESP-01 stopped working.
+
+I got back to a working state but without a super cap this thing may be dead in the water unless I accept defeat and use 2 AA/AAA cells or something. Or... order more parts ahhhhhh
+
+Had me scurrying like a rat for no reason. Ultimately may have bene pointless. I just split my 4AAA NiMh pack from my Alula (that I pretty much destroyed last time I slope soared) so I had a 2S pack.
+
+Well... that also doesn't work. Not enough current to work ugh... failure failure failure
+
+Side note I bought my first composite 1.5m DLG ever damn they're expensive
+
+Gotta get back to my roots, that open field, peace of mind, being
+
+This is the circuit design I'm trying to do now. Seems I gotta get the timing right when things turn on/off.
 
 # 03/16/2021
 I have all the parts I need now. I am doing a "quick" power consumption check. There are a few ways to go about optimizing power consumption, maybe through deep sleep/power cutting, almost 0. But I don't want to get sucked into all that, I'll come up with a solution and within this week I will finish up this project. I'm going to design these snap-together splash-proof headers for the moisture sensors so they should generally be safe from watering. They'll only be on for a couple seconds so I don't think heat is a big concern eg. vents.
