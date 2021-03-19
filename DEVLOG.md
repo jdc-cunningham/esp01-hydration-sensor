@@ -36,7 +36,7 @@ I have to turn my ADHD 24/7 music off and focus/draw the diagram, be the diagram
 - EPS-01 goes back to deep sleep (target is daily)
 - massive buck boost converter drains ESP-01 battery :(
 
-  
+The two circuits will need to be joined with a switch so that once the battery is plugged in, then it turns on and both devices should be in sync regarding timing. There is communication from the Seeduino to the ESP-01 so it's not completely blind but yeah and time-padding.
 
 # 03/17/2021
 I think today is it. I can finally finish this project and the device should last a month long or more. I am finally done buying parts... it's stressful ordering parts regarding delivery completion.

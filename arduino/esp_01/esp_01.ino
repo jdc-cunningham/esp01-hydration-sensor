@@ -17,7 +17,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-int sleepDelay = 5000; // 86.4e3 full day in seconds
+int sleepDelay = 30000; // 86.4e3 full day in seconds
 
 void setup()
 {
@@ -62,18 +62,18 @@ void clearSerialBuffer()
 
 void loop()
 {
-  // turn big circuit on to power Seeeduino
-  digitalWrite(LED, HIGH);
+  digitalWrite(LED, HIGH); // turn Seeeduino circuit on
+  delay(10000);
   if (Serial.available() > 0)
   {
     String serialMsg = Serial.readString();
     if (serialMsg.length() > 0)
     {
+      digitalWrite(LED, LOW);
       txStrByWiFi(serialMsg);
       clearSerialBuffer();
-      digitalWrite(LED, LOW);
-      delay(5000);
     }
   }
   delay(sleepDelay);
+  // ESP.deepSleep(sleepDelay);
 }
