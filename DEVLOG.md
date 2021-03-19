@@ -10,6 +10,34 @@
   - [ ] verify it works on its own
   - [ ] can turn on the main circuit(big battery and seeeduino can work)
 
+
+# 03/18/2021
+Back at it again, this is my focus now, then I gotta crap out a React Native app on iOS/publish it in the store... that'll be something. After that back to the SLAM projects, I have a small robot in mind with basic SLAM navigation too, that'll be neat, using a Teensy for the first time and 12 servos so it'll be a legit robot not like the piece of crap one I made.
+
+So I bought two of these 1,100mAh 2S LiPo packs... and I just decided I'll use both, one to power the ESP-01 in deep sleep, the other to power the Seeeduino/sensors. It sucks... but I'm done buying parts and I'm done waiting to finish this project. I'm going to crap it out/force blood to come out of both of my eyes. Squeeze my skull from the temples like a half lemon.
+
+One problem I saw is that the power on/off was not matching between the ESP-01 and the Seeeduino so the Seeeduino would get into this bad state(yellow light flickering/pulsing) and it would stop working.
+
+So I will update the code where both talk to each other eg. "I'm done with my measurements/transmitted, I'm ready for nap time" and yeah... a small little bed and ball of lint for a pillow for this chip.
+
+Ugh... it sucks I'm using this beast converter... oh well I have another one/not using it for anything else.
+
+I need to do long term testing. I have to attach the BMS's and then I guess after that I'll charge these batteries from the my workbench powersupply in the future(with a [diode in series](https://www.eevblog.com/forum/beginners/charging-batteries-with-a-bench-supply/)!).
+
+I have to turn my ADHD 24/7 music off and focus/draw the diagram, be the diagram, become the circuit.
+
+- ESP-01 wakes up
+- Powers on MOSFET to drive Seeduino (digital high gate)
+- Seeeduino boots, turns on its MOSFET so that all parallel connected sensors/battery voltage measurement works
+- Do sampling
+- transmit through ESP-01
+- say it's done to the ESP-01
+- ESP-01 powers off MOSFET (digital low gate)
+- EPS-01 goes back to deep sleep (target is daily)
+- massive buck boost converter drains ESP-01 battery :(
+
+  
+
 # 03/17/2021
 I think today is it. I can finally finish this project and the device should last a month long or more. I am finally done buying parts... it's stressful ordering parts regarding delivery completion.
 

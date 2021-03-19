@@ -13,12 +13,11 @@
 
 #define LED 2 // LED to GPIO2
 
+#include "env.h"
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-const String wiFiSsid = "SSID";
-const String wiFiPass = "Pass";
-const String httpEndpoint = "http://192.168.1.144:5000/soil-moisture";
+int sleepDelay = 5000; // 86.4e3 full day in seconds
 
 void setup()
 {
@@ -65,9 +64,6 @@ void loop()
 {
   // turn big circuit on to power Seeeduino
   digitalWrite(LED, HIGH);
-  // delay(10000);
-  // digitalWrite(LED, LOW);
-  // check for serial message to send to server
   if (Serial.available() > 0)
   {
     String serialMsg = Serial.readString();
@@ -79,5 +75,5 @@ void loop()
       delay(5000);
     }
   }
-  delay(5000);
+  delay(sleepDelay);
 }
