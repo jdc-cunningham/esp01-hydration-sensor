@@ -38,6 +38,15 @@ I have to turn my ADHD 24/7 music off and focus/draw the diagram, be the diagram
 
 The two circuits will need to be joined with a switch so that once the battery is plugged in, then it turns on and both devices should be in sync regarding timing. There is communication from the Seeduino to the ESP-01 so it's not completely blind but yeah and time-padding.
 
+So it's been running for like let's see
+1:06:59 to 3:02:31
+
+it's not perfectly linear there was one time the Seeeduino got into that bad state where it didn't start/shut down correctly (slow flashing pulsing yellow LED with green LED) so I had to manually disconnect it
+
+This means I will have to update the code to really make it work on communication vs. time in case they lose sync.
+
+But I will measure the used mAh and log it... it has pretty much been running/transmitting every 40-45 seconds.
+
 # 03/17/2021
 I think today is it. I can finally finish this project and the device should last a month long or more. I am finally done buying parts... it's stressful ordering parts regarding delivery completion.
 
