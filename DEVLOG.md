@@ -47,6 +47,20 @@ This means I will have to update the code to really make it work on communicatio
 
 But I will measure the used mAh and log it... it has pretty much been running/transmitting every 40-45 seconds.
 
+Seeeduino used 67mAh - 0.52mAh per pulse
+ESP-01 used 114mAh - 0.77mAh per pulse means about 50% more consumption than the Seeeduino
+
+Just basing off the "pulses"
+Counting these lines the dumb way
+1:33:28 stop 19 * 2, 38
+2:08:05 stop 19 * 2, 38
+2:36:02 stop assuming 19 as well
+3:02:31 17.5 -> means 149 pulses I believe.
+
+These numbers don't even make sense... I mean the ESP-01 I wasn't putting into deep sleep for the test, it was just a delay.
+
+I'm not an EE/phenomenal at math so I'll use some rough math, physical testing and safety(bms).
+
 # 03/17/2021
 I think today is it. I can finally finish this project and the device should last a month long or more. I am finally done buying parts... it's stressful ordering parts regarding delivery completion.
 
