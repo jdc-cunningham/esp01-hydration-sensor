@@ -10,6 +10,17 @@
   - [ ] verify it works on its own
   - [ ] can turn on the main circuit(big battery and seeeduino can work)
 
+# 03/20/2021
+
+Seeeduino battery 8.20V
+ESP-01 battery 8.17Vß
+
+Still having problems with serial data not matching eg. I send "sb" and I get "sbs" or "sby" not sure why.
+
+# 03/19/2021
+I've been trying to run the batteries down on the side throughout the day but the Seeeduino keeps getting into this bad state where it won't turn off(orange and yellow LED on, orange flickering).
+
+So instead of using delays I will use a state/communication between the two devices in case there is a time overlay.
 
 # 03/18/2021
 Back at it again, this is my focus now, then I gotta crap out a React Native app on iOS/publish it in the store... that'll be something. After that back to the SLAM projects, I have a small robot in mind with basic SLAM navigation too, that'll be neat, using a Teensy for the first time and 12 servos so it'll be a legit robot not like the piece of crap one I made.

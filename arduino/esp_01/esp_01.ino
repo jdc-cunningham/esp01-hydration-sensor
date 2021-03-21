@@ -17,7 +17,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-int sleepDelay = 30000; // 86.4e3 full day in seconds
+int sleepDelay = 1000; // 86.4e3 full day in seconds
+bool seeeduinoBooted = false;
 
 void setup()
 {
@@ -63,17 +64,29 @@ void clearSerialBuffer()
 void loop()
 {
   digitalWrite(LED, HIGH); // turn Seeeduino circuit on
-  delay(10000);
+
   if (Serial.available() > 0)
   {
     String serialMsg = Serial.readString();
     if (serialMsg.length() > 0)
     {
-      digitalWrite(LED, LOW);
-      txStrByWiFi(serialMsg);
-      clearSerialBuffer();
+      // https://forum.arduino.cc//index.php?topic=543780.0
+      if (serialMsg.equals("9999")) // not a possible value
+      {
+        txStrByWiFi("match");
+        seeeduinoBooted = true;
+        clearSerialBuffer();
+      } else {
+        digitalWrite(LED, LOW);
+        delay(2000); // wait to completely die
+        seeeduinoBooted = false;
+        txStrByWiFi(serialMsg);
+        clearSerialBuffer();
+        sleepDelay = 10000; // long sleep
+      }
     }
   }
+
   delay(sleepDelay);
   // ESP.deepSleep(sleepDelay);
 }
